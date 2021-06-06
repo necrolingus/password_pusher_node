@@ -20,3 +20,7 @@
 
 #### What is left to do?
 * Some minor cleanups
+
+
+#### Will I create a gui for it?
+* Probably at some point
