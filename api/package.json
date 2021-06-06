@@ -1,0 +1,19 @@
+{
+  "name": "password_pusher_api",
+  "version": "1.0.0",
+  "description": "The API component of password pusher. HTTP Verbs only",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "crypto": "^1.0.1",
+    "express": "^4.17.1",
+    "jsonschema": "^1.4.0",
+    "mysql2": "^2.2.5",
+    "sequelize": "^6.6.2",
+    "uuid": "^8.3.2"
+  }
+}
