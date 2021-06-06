@@ -62,8 +62,8 @@ exports.selectOne = (req, res) => {
             //if nothing is found data is null so have to test for it
             if (data){
                 data.decrement('viewsToLive', {by: 1});
-            }
-            data.password = cipherHandler.decrypt(data.password)                   
+                data.password = cipherHandler.decrypt(data.password);
+            }             
             return res.status(200).json({
                 status: 'good',
                 outcome: data
