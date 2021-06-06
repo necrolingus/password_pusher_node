@@ -2,7 +2,7 @@ const express = require('express')
 const app = express()
 app.use(express.json());
 require('./routes/apiRoutes')(app);
-const port = 3000
+
 
 const initDB = require("./controllers/createDb");
 const vacuum = require("./controllers/vacuumDb");
@@ -16,6 +16,7 @@ app.get("/", (req, res) => {
     });
 });
 
+const port = dbConfig.nodePort
 
 app.listen(port, () => {
     console.log('Started up on port: ' + port)

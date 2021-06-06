@@ -36,7 +36,8 @@ config = {
       acquire: parseInt(process.env.DBPOOLACQUIRE),
       idle: parseInt(process.env.DBPOOLIDLE),
     },
-    timezone: process.env.DBTIMEZONE //for writing to database
+    timezone: process.env.DBTIMEZONE, //for writing to database
+    nodePort: process.env.NODEPORT
   };
 
 module.exports = config;
