@@ -8,6 +8,7 @@ const initDB = require("./controllers/createDb");
 const vacuum = require("./controllers/vacuumDb");
 const db = require("./models/mainModel");
 
+const dbConfig = require("./config/dbConfig");
 
 app.get("/", (req, res) => {
     return res.status(200).json({
@@ -19,7 +20,7 @@ app.get("/", (req, res) => {
 app.listen(port, () => {
     console.log('Started up on port: '.concat(port))
     
-    initDB.createDb('mysql')
+    initDB.createDb(dbConfig.dialect)
         .then((err) => {
             if (err) {
                 console.log('There was an error in app.listen')

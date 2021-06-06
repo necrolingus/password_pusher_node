@@ -1,5 +1,3 @@
-//var Validator = require('jsonschema').Validator
-
 var postPasswordScehma = {
     "id": "/postPassword",
     "type": "object",
