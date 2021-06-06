@@ -6,7 +6,7 @@ config = {
     logging: true,
     HOST: "localhost", //create env var
     USER: "root", //create env var
-    PASSWORD: "xxxx", //create env var
+    PASSWORD: "superroot", //create env var
     DB: "testdb", //create env var
     dialect: "mysql", //create env var
     dialectOptions: {

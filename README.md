@@ -20,6 +20,8 @@
 
 #### What is left to do?
 * Some minor cleanups
+* Moving dbConfig.js to env
+* Creating a docker image so one can easily compose this project with e.g. a mysql or postgres
 
 
 #### Will I create a gui for it?
