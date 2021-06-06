@@ -18,24 +18,24 @@ app.get("/", (req, res) => {
 
 
 app.listen(port, () => {
-    console.log('Started up on port: '.concat(port))
+    console.log('Started up on port: ' + port)
     
-    initDB.createDb(dbConfig.dialect)
+    initDB.createDb(dbConfig.dBDialect)
         .then((err) => {
             if (err) {
                 console.log('There was an error in app.listen')
                 console.log(err)
                 process.exit()
             }
-            db.sequelize.sync({force: false}).then(() => {
+            db.sequelize.sync({force: dbConfig.forceDbRecreate}).then(() => {
             console.log("Drop and re-sync db.");
+        }).catch((err) => {
+            console.log(err)
+            process.exit()
         })
         vacuum.vacuumOldData() //setInterval function for continuous cleanup of old records
+    }).catch((err) => {
+        console.log(err)
+        process.exit()
     })
 })
-
-    
-
-
-
-

@@ -2,6 +2,7 @@
 
 const dbConfig = require("../config/dbConfig");
 const crypto = require('crypto')
+
 const algorithm = 'aes-256-cbc'
 const encryptionKey = dbConfig.encryptionKey
 

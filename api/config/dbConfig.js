@@ -1,24 +1,42 @@
 var config = {}
+require('dotenv').config();
+
+var dBLogging = false
+var dBdialectOptionsuseUTC = true
+var forceDbRecreate = false
+
+if (process.env.DBLOGGING === "true"){
+  dBLogging = true
+}
+
+if (process.env.DBDIALECTOPTIONSUSEUTC === "false"){
+  dBdialectOptionsuseUTC = false
+}
+
+if (process.env.FORCEDBRECREATE === "true"){
+  forceDbRecreate = true
+}
 
 config = {
-    encryptionKey: 'ujYUh7LLgaacQgtbasvzCJJg33prZiZx', //must be 32 chars or 256 bits. create env var
-    vacuumInterval: 300 * 1000, //make it quite high and also maybe an env var
-    logging: true,
-    HOST: "localhost", //create env var
-    USER: "root", //create env var
-    PASSWORD: "superroot", //create env var
-    DB: "testdb", //create env var
-    dialect: "mysql", //create env var
-    dialectOptions: {
-      useUTC: true, //for reading from database
+    encryptionKey: process.env.ENCRYPTIONKEY,
+    forceDbRecreate: forceDbRecreate,
+    vacuumInterval: parseInt(process.env.VACUUMINTERVAL) * 1000,
+    dBLogging: dBLogging,
+    dBHost: process.env.DBHOST,
+    dBUser: process.env.DBUSER,
+    dBPassword: process.env.DBPASSWORD,
+    database: process.env.DATABASE,
+    dBDialect: process.env.DBDIALECT,
+    dBDialectOptions: {
+      useUTC: dBdialectOptionsuseUTC, //for reading from database
     },
-    pool: {
-      max: 25,
-      min: 5,
-      acquire: 30000,
-      idle: 10000
+    dBPool: {
+      max: parseInt(process.env.DBPOOLMAX),
+      min: parseInt(process.env.DBPOOLMIN),
+      acquire: parseInt(process.env.DBPOOLACQUIRE),
+      idle: parseInt(process.env.DBPOOLIDLE),
     },
-    timezone: '+00:00' //for writing to database
+    timezone: process.env.DBTIMEZONE //for writing to database
   };
 
-  module.exports = config;
+module.exports = config;
