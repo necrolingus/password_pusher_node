@@ -1,10 +1,8 @@
 //thanks to this guy https://gist.github.com/vlucas/2bd40f62d20c1d49237a109d491974eb
-
-const dbConfig = require("../config/dbConfig");
 const crypto = require('crypto')
 
 const algorithm = 'aes-256-cbc'
-const encryptionKey = dbConfig.encryptionKey
+const encryptionKey = process.env.ENCRYPTIONKEY
 
 function encrypt(text) {
     let iv = crypto.randomBytes(16) //must be 16 length

@@ -2,8 +2,9 @@ const dbConfig = require("../config/dbConfig");
 const Sequelize = require("sequelize");
 
 
-const sequelize = new Sequelize(dbConfig.database, dbConfig.dBUser, dbConfig.dBPassword, {
-  host: dbConfig.dBHost,
+const sequelize = new Sequelize(process.env.DATABASE, process.env.DBUSER, process.env.DBPASSWORD, {
+  host: process.env.DBHOST,
+  port: process.env.DBPORT,
   dialect: dbConfig.dBDialect,
   logging: dbConfig.dBLogging,
   //operatorsAliases: false,
