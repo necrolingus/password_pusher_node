@@ -3,7 +3,7 @@ const app = express()
 app.use(express.json());
 require('./routes/apiRoutes')(app);
 
-
+console.log(process.env.ENCRYPTIONKEY)
 const initDB = require("./controllers/createDb");
 const vacuum = require("./controllers/vacuumDb");
 const db = require("./models/mainModel");
