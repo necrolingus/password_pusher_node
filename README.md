@@ -6,6 +6,10 @@
 * Everything is written in JS and uses Sequelize as the ORM and MySQL as the backend and jsonvalidator to validate JSON  
 * app.js calls apiRoutes.js which calls passwordController.js This is pretty much the main flow. The project is small and simple
 
+##### Docker
+You can build the image with the included Dockerfile, or get it from here: https://hub.docker.com/repository/docker/necrolingus/password_pusher_node  
+The best way to run this is in docker compose, with a mysql container.  
+
 ##### Want to use a different DBMS?
 * Install the appropriate driver: https://sequelize.org/master/manual/getting-started.html  
 * In dbConfig.js change your dialect  
@@ -26,8 +30,8 @@ DBUSER
 DBPASSWORD  
 DATABASE  
 
-##### A quick rundown
-###### POST:  
+#### A quick rundown
+##### POST:  
 <your_url>:8080/api/password  
 **Request:** {"password":"i am a super strong password!","hoursToLive":2,"viewsToLive":3}  
 **Response:** {"status": "good","outcome": "db9d3915-2ecb-4671-b8d5-3519df48f0a1"}  
@@ -35,7 +39,7 @@ This UUID is what you share with the peson so they can get the password
 hoursToLive is how long this password should be in the DB before it gets deleted  
 viewToLive is how many times it can be viewed before it gets deleted  
 
-###### GET:
+##### GET:
 <your_url>:8080/api/db9d3915-2ecb-4671-b8d5-3519df48f0a1  
 **Response:**  
 {  
@@ -51,20 +55,12 @@ viewToLive is how many times it can be viewed before it gets deleted
 }  
 After every view viewsToLive will get decremented
 
-###### DELETE:
+##### DELETE:
 <your_url>:8080/api/c53d5b02-2361-4228-a283-5e53bee683a7  
 **Response:**  
-{  
-    "status": "good",  
-    "outcome": 1  
-}  
-Outcome contains the number of records deleted (will always be 1 or 0)
-
-
-#### What is left to do?
-* Some minor cleanups
-* Moving dbConfig.js to env
-* Creating a docker image so one can easily compose this project with e.g. a mysql or postgres
+{"status": "good", "outcome": 1}    
+Outcome contains the number of records deleted (will always be 1 or 0)  
+I dont think anyone will ever use DELETE, but there will for sure be a use case for it somewhere  
 
 
 #### Will I create a gui for it?
