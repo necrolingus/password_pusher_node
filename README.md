@@ -17,6 +17,14 @@
 * Passwords are stored encrypted in the DB. Check out cipherHandler.js  
 * Old records are deleted automatically by vacuumDb.js which runs as a setInterval
 
+##### What environment variables do I need to pass
+There is a .env.sample file in the api folder. For docker, you of course have to pass these variables.  
+ENCRYPTIONKEY  
+DBHOST  
+DBPORT  
+DBUSER  
+DBPASSWORD  
+DATABASE  
 
 #### What is left to do?
 * Some minor cleanups
