@@ -57,8 +57,7 @@ After every view viewsToLive will get decremented
 
 ##### DELETE:
 <your_url>:8080/api/c53d5b02-2361-4228-a283-5e53bee683a7  
-**Response:**  
-{"status": "good", "outcome": 1}    
+**Response:** {"status": "good", "outcome": 1}    
 Outcome contains the number of records deleted (will always be 1 or 0)  
 I dont think anyone will ever use DELETE, but there will for sure be a use case for it somewhere  
 
