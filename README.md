@@ -26,6 +26,41 @@ DBUSER
 DBPASSWORD  
 DATABASE  
 
+##### A quick rundown
+###### POST:  
+<your_url>:8080/api/password  
+**Request:** {"password":"i am a super strong password!","hoursToLive":2,"viewsToLive":3}  
+**Response:** {"status": "good","outcome": "db9d3915-2ecb-4671-b8d5-3519df48f0a1"}  
+This UUID is what you share with the peson so they can get the password  
+hoursToLive is how long this password should be in the DB before it gets deleted  
+viewToLive is how many times it can be viewed before it gets deleted  
+
+###### GET:
+<your_url>:8080/api/db9d3915-2ecb-4671-b8d5-3519df48f0a1  
+**Response:**  
+{  
+    "status": "good",  
+    "outcome": {  
+        "uniqueId": "c53d5b02-2361-4228-a283-5e53bee683a7",  
+        "password": "i am a super strong password!",  
+        "hoursToLive": "2021-06-07T19:14:29.531Z",  
+        "viewsToLive": 3,  
+        "createdAt": "2021-06-07T15:14:29.000Z",  
+        "updatedAt": "2021-06-07T15:14:29.000Z"  
+    }  
+}  
+After every view viewsToLive will get decremented
+
+###### DELETE:
+<your_url>:8080/api/c53d5b02-2361-4228-a283-5e53bee683a7  
+**Response:**  
+{  
+    "status": "good",  
+    "outcome": 1  
+}  
+Outcome contains the number of records deleted (will always be 1 or 0)
+
+
 #### What is left to do?
 * Some minor cleanups
 * Moving dbConfig.js to env
