@@ -28,12 +28,12 @@ app.listen(port, () => {
                 process.exit()
             }
             db.sequelize.sync({force: dbConfig.forceDbRecreate}).then(() => {
-            console.log("Drop and re-sync db.");
-        }).catch((err) => {
-            console.log(err)
-            process.exit()
-        })
-        vacuum.vacuumOldData() //setInterval function for continuous cleanup of old records
+                console.log("Drop and re-sync db.");
+            }).catch((err) => {
+                console.log(err)
+                process.exit()
+            })
+            vacuum.vacuumOldData() //setInterval function for continuous cleanup of old records
     }).catch((err) => {
         console.log(err)
         process.exit()
